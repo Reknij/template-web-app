@@ -1,0 +1,16 @@
+[package]
+name = "worker"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+sys-core = { workspace = true }
+db = { path = "../db" }
+
+tokio = { workspace = true }
+tracing = { workspace = true }
+thiserror = { workspace = true }
+reqwest = { version = "0.12" }
+futures = { workspace = true }
+async-trait = { workspace = true }
+chrono = { workspace = true }

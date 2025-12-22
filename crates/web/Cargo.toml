@@ -1,0 +1,19 @@
+[package]
+name = "web"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+sys-core = { workspace = true }
+service = { path = "../service" }
+
+tokio = { workspace = true }
+tower-http = { version = "0.5", features = ["cors", "fs"] }
+axum = { version = "0.8", features = ["macros"] }
+tracing = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+jsonwebtoken = { version = "10", features = ["rust_crypto"] }
+chrono = { workspace = true }
+async-trait = { workspace = true }
+uuid = { workspace = true }

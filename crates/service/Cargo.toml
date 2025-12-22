@@ -1,0 +1,12 @@
+[package]
+name = "service"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+sys-core = { workspace = true }
+db = { path = "../db" }
+tokio = { workspace = true }
+async-trait = { workspace = true }
+thiserror = { workspace = true }
+uuid = { workspace = true }
