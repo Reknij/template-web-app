@@ -33,8 +33,6 @@ pub struct UserDetail {
     pub username: String,
     pub password: String,
     pub email: String,
-    pub flexi_username: String,
-    pub flexi_password: String,
     pub created_at: DateTime<Utc>,
     pub updated_at: DateTime<Utc>,
 }
@@ -44,8 +42,6 @@ pub struct UserDetailToAddOrUpdate {
     pub alias: String,
     pub username: String,
     pub password: String,
-    pub flexi_username: String,
-    pub flexi_password: String,
     pub email: String,
 }
 
