@@ -71,6 +71,7 @@ impl WorkerFactory {
             for worker in workers {
                 let notify_clone = stop_notify.clone();
                 worker_tasks.push(tokio::spawn(async move {
+                    let name = worker.name();
                     loop {
                         match worker.loop_process().await {
                             Ok(duration) => {
@@ -82,7 +83,7 @@ impl WorkerFactory {
                                 }
                             }
                             Err(err) => {
-                                error!("Cannot process worker loop due {err}!");
+                                error!("Cannot process worker `{name}` loop due {err}!");
                                 break;
                             }
                         }
