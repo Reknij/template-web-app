@@ -5,7 +5,7 @@ mod models;
 
 use axum::Router;
 use service::CommonService;
-use sys_core::config::Config;
+use shared::config::Config;
 use tower_http::services::ServeDir;
 use tower_http::services::ServeFile;
 use tracing::{error, info};

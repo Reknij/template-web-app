@@ -11,7 +11,7 @@ app = { path = "crates/app" }
 
 [workspace.dependencies]
 # Core
-sys-core = { path = "crates/sys-core" }
+shared = { path = "crates/shared" }
 
 # Async
 tokio = { version = "1", features = ["full"] }

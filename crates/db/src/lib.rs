@@ -1,6 +1,6 @@
 pub mod error;
 pub mod filters;
-pub mod storage;
+pub mod db;
 
 pub use error::Error;
 

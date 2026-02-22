@@ -1,5 +1,5 @@
 use service::{CommonService, CoreService};
-use sys_core::models::user::UserSummary;
+use shared::models::user::UserSummary;
 
 #[derive(Debug, Clone)]
 pub struct AppState {

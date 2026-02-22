@@ -1,4 +1,4 @@
-use sys_core::models::user::UserDetailToAddOrUpdate;
+use shared::models::user::UserDetailToAddOrUpdate;
 
 use crate::preprocess::Preprocess;
 

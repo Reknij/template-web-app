@@ -1,9 +1,9 @@
 pub mod error;
 mod preprocess;
 pub mod service_ext;
-use db::storage::FullStorage;
+use db::db::FullDb;
 pub use error::Error;
-use sys_core::{config::Config, models::user::UserSummary};
+use shared::{config::Config, models::user::UserSummary};
 use uuid::Uuid;
 
 pub type Result<T> = std::result::Result<T, Error>;
@@ -12,13 +12,13 @@ use std::{fmt::Debug, sync::Arc};
 
 #[derive(Clone)]
 pub struct CommonService {
-    storage: Arc<dyn FullStorage>,
+    storage: Arc<dyn FullDb>,
     config: Arc<Config>,
 }
 
 #[derive(Clone)]
 pub struct CoreService {
-    storage: Arc<dyn FullStorage>,
+    storage: Arc<dyn FullDb>,
 
     /// Current logined user.
     user: Option<UserSummary>,
@@ -37,7 +37,7 @@ impl Debug for CoreService {
 }
 
 impl CommonService {
-    pub fn new(storage: Arc<dyn FullStorage + 'static>, config: Config) -> Self {
+    pub fn new(storage: Arc<dyn FullDb + 'static>, config: Config) -> Self {
         Self { storage, config: Arc::new(config) }
     }
     pub fn core(&self, user: Option<UserSummary>) -> CoreService {

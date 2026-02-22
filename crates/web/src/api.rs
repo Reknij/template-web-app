@@ -18,7 +18,7 @@ use axum::{
 };
 
 use service::service_ext::user_ext::UserExt;
-use sys_core::models::{
+use shared::models::{
     Pagination,
     user::{UserDetail, UserDetailToAddOrUpdate},
 };

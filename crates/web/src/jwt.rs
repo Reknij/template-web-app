@@ -1,6 +1,6 @@
 use chrono::{Duration, Utc};
 use jsonwebtoken::{EncodingKey, Header, encode};
-use sys_core::models::user::{UserDetail, UserSummary};
+use shared::models::user::{UserDetail, UserSummary};
 
 pub fn generate_token(user: &UserDetail, secret: &str) -> Result<String, jsonwebtoken::errors::Error> {
     // Set expiration to 1 hour from now

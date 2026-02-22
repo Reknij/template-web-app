@@ -1,18 +1,19 @@
 pub mod sqlite_impl;
+pub mod any_impl;
 
 use crate::Result;
 use async_trait::async_trait;
-use sys_core::models::{
+use shared::models::{
     Pagination,
     user::{UserDetail, UserDetailToAddOrUpdate, UserType},
 };
 use uuid::Uuid;
 
-pub trait FullStorage: UserStorage {}
-impl<T> FullStorage for T where T: UserStorage {}
+pub trait FullDb: UserDb {}
+impl<T> FullDb for T where T: UserDb {}
 
 #[async_trait]
-pub trait UserStorage: Send + Sync {
+pub trait UserDb: Send + Sync {
     async fn add_user(&self, user_type: UserType, detail: UserDetailToAddOrUpdate) -> Result<Uuid>;
     async fn exists_user_type(&self, user_type: UserType) -> Result<bool>;
     async fn remove_user(&self, id: Uuid) -> Result<bool>;

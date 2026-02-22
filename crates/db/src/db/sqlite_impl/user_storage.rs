@@ -1,16 +1,16 @@
 use crate::{
     Result,
-    storage::{UserStorage, sqlite_impl::StorageSqliteImpl},
+    db::{UserDb, sqlite_impl::SqliteDbImpl},
 };
 use async_trait::async_trait;
-use sys_core::models::{
+use shared::models::{
     Pagination,
     user::{UserDetail, UserDetailToAddOrUpdate, UserType},
 };
 use uuid::Uuid;
 
 #[async_trait]
-impl UserStorage for StorageSqliteImpl {
+impl UserDb for SqliteDbImpl {
     async fn exists_user_type(&self, user_type: UserType) -> Result<bool> {
         let row = sqlx::query(r#"SELECT 1 FROM users WHERE is_deleted = FALSE AND user_type = ? LIMIT 1"#)
             .bind(user_type)

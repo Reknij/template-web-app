@@ -1,6 +1,6 @@
 use crate::{CoreService, Result, preprocess::Preprocess};
 use async_trait::async_trait;
-use sys_core::models::{
+use shared::models::{
     Pagination,
     user::{UserDetail, UserDetailToAddOrUpdate, UserType},
 };

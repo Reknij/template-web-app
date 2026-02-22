@@ -2,7 +2,7 @@ use axum::extract::FromRequestParts;
 use axum::http::StatusCode;
 use axum::http::request::Parts;
 use jsonwebtoken::{DecodingKey, Validation, decode};
-use sys_core::models::user::UserSummary;
+use shared::models::user::UserSummary;
 
 use crate::app_state::AppState;
 

@@ -1,11 +1,11 @@
 mod args;
 mod banner;
 
-use db::storage::{FullStorage, sqlite_impl::StorageSqliteImpl};
+use db::db::{FullDb, sqlite_impl::SqliteDbImpl};
 use service::CommonService;
 use std::process;
 use std::sync::Arc;
-use sys_core::config::Config;
+use shared::config::Config;
 use tokio::runtime::Builder;
 use tracing::{error, info, warn};
 
@@ -34,7 +34,7 @@ pub fn run() {
     let rt = Builder::new_multi_thread().enable_all().build().expect("Failed to build tokio runtime");
 
     rt.block_on(async {
-        let storage: Arc<dyn FullStorage> = {
+        let storage: Arc<dyn FullDb> = {
             let db_url = &config.db.url;
 
             let scheme = db_url.split(':').next().unwrap_or("unknown");
@@ -43,7 +43,7 @@ pub fn run() {
                 "sqlite" => {
                     info!("Initializing SQLite storage from URL: {}", db_url);
 
-                    match StorageSqliteImpl::new(db_url.clone()).await {
+                    match SqliteDbImpl::new(db_url.clone()).await {
                         Ok(sqlite_storage) => Arc::new(sqlite_storage),
                         Err(e) => {
                             error!("FATAL: Failed to initialize SQLite storage: {}", e);
